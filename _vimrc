@@ -6,8 +6,10 @@ let $HOME=$VIM
 let $USB=$VIM.'\..' 
 let $PATH=$HOME.'\MinGW\msys\1.0\bin'
 
+"let $PATH=$HOME.'/vimfiles/bundle'
+
 let $Git=$VIM.'\git'
-let $TEMP='C:\Temp'
+let $TEMP=$HOME.'\vim80\tmp'
 let $TMP=$TEMP
 
 set shell=$HOME\MinGW\msys\1.0\bin\bash
@@ -54,8 +56,11 @@ set smartindent
 set autochdir
 
 
+"command mapping
 cnoreabbrev W w
 cnoreabbrev Wq wq
+cnoreabbrev m !make
+cnoreabbrev . !./main 
 
 
 "set expandtab
@@ -67,10 +72,12 @@ inoremap jk <ESC>
 
 nnoremap <a-l> :NERDTreeToggle <CR>
 
-map <F5> :!gcc % -o %<.exe<CR> :!%<.exe<CR>
+nnoremap <F5> :!gcc -o %< % <CR> :!./%< <CR>
+
+nnoremap <F2> :!make <CR> :!./main <CR>
 
 
-set rtp+=$HOME\.vim\bundle\Vundle.vim
+set rtp+=$HOME/.vim/bundle/Vundle.vim/
 
 call vundle#begin()
 
